@@ -1,22 +1,5 @@
-import { App, TAbstractFile, TFile, TFolder, Vault, parseYaml, SectionCache } from 'obsidian';
-import { DataFormats } from './data-types';
-
-interface UnprocessedGrammar {
-    name: string;
-    data: TFile;
-}
-
-interface HalfProcess {
-    name: string;
-    originalType: DataFormats;
-    data: string;
-}
-
-interface ValidGrammar {
-    name: string;
-    originalType: DataFormats;
-    data: object; // Technically it's an object full of arrays
-}
+import { App, TFile, Vault, parseYaml, SectionCache } from 'obsidian';
+import { DataFormats, UnprocessedGrammar, HalfProcess, ValidGrammar } from './data-types'; 
 
 async function scanGrammarFolder(vault: Vault, path: string): Promise<UnprocessedGrammar[] | null> {
     if (!path) return null;
@@ -85,11 +68,15 @@ export async function parseDataFromFolder(app: App, path: string): Promise<Valid
 
         // parse JSON *or* turn YAML into JSON
             try {
-                // Check for JSON first.
-                validated.data = JSON.parse(content.data)
-            } catch {
-                // YAML fallback.
-                validated.data = parseYaml(content.data)
+                if (content.originalType === DataFormats.JSON) {
+                    validated.data = JSON.parse(content.data);
+                } else {
+                    // YAML
+                    validated.data = parseYaml(content.data);
+                }
+            } catch (e) {
+                console.error(`Failed to parse ${content.name}:`, e);
+                return null;
             }
 
             return validated;

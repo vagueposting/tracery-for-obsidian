@@ -24,6 +24,7 @@
 		"typescript-eslint": "8.35.1"
 	},
 	"dependencies": {
+		"@popperjs/core": "^2.11.8",
 		"@types/tracery-grammar": "^2.7.4",
 		"js-yaml": "^4.1.1",
 		"obsidian": "^1.12.3",

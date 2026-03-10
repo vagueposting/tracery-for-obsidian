@@ -13,12 +13,20 @@
             "state": {
               "type": "markdown",
               "state": {
+<<<<<<< HEAD
                 "file": "Welcome.md",
+=======
+                "file": "templates/Test YAML.md",
+>>>>>>> tracery-implementation
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
+<<<<<<< HEAD
               "title": "Welcome"
+=======
+              "title": "Test YAML"
+>>>>>>> tracery-implementation
             }
           }
         ]
@@ -186,13 +194,17 @@
   },
   "active": "0c1a2eeba6ff333c",
   "lastOpenFiles": [
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     "templates/Test YAML.md",
+=======
+>>>>>>> tracery-implementation
     "Welcome.md",
     "templates/Test.md",
     "grammars/Sample Grammar YAML.md",
     "grammars/Sample Grammar.md",
     "Template Spam Go.md",
+<<<<<<< HEAD
 =======
     "templates/Test.md",
     "templates/Test YAML.md",
@@ -204,13 +216,24 @@
     "Welcome.md",
 >>>>>>> Stashed changes
     "Untitled.md",
+=======
+    "Untitled.md",
+    "templates/Test YAML.md",
+>>>>>>> tracery-implementation
     "Untitled 5.md",
     "Untitled 3.md",
     "Untitled 4.md",
     "Untitled 1.md",
     "Untitled 2.md",
     "test2.md",
+<<<<<<< HEAD
     "images",
     "fried foods"
+=======
+    "templates",
+    "images",
+    "fried foods",
+    "grammars"
+>>>>>>> tracery-implementation
   ]
 }
