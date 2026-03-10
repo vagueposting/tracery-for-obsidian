@@ -186,12 +186,23 @@
   },
   "active": "0c1a2eeba6ff333c",
   "lastOpenFiles": [
+<<<<<<< Updated upstream
     "templates/Test YAML.md",
     "Welcome.md",
     "templates/Test.md",
     "grammars/Sample Grammar YAML.md",
     "grammars/Sample Grammar.md",
     "Template Spam Go.md",
+=======
+    "templates/Test.md",
+    "templates/Test YAML.md",
+    "templates",
+    "grammars/Sample Grammar.md",
+    "grammars/Sample Grammar YAML.md",
+    "grammars",
+    "Template Spam Go.md",
+    "Welcome.md",
+>>>>>>> Stashed changes
     "Untitled.md",
     "Untitled 5.md",
     "Untitled 3.md",
@@ -199,9 +210,7 @@
     "Untitled 1.md",
     "Untitled 2.md",
     "test2.md",
-    "templates",
     "images",
-    "fried foods",
-    "grammars"
+    "fried foods"
   ]
 }
