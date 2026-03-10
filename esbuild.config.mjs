@@ -37,7 +37,7 @@ const context = await esbuild.context({
 	logLevel: "info",
 	sourcemap: prod ? false : "inline",
 	treeShaking: true,
-	outfile: "main.js",
+	outfile: "D:/github/tracery-for-obsidian/testVault/.obsidian/plugins/tracery-for-obsidian/main.js",
 	minify: prod,
 });
 
