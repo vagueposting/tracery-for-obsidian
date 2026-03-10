@@ -1,18 +1,24 @@
 import { App, TAbstractFile, TFile, TFolder, Vault, parseYaml, SectionCache } from 'obsidian';
 import { DataFormats } from './data-types';
 
-interface HalfProcess {
+interface UnprocessedGrammar {
     name: string;
     data: TFile;
 }
 
-interface CleanGrammar {
+interface HalfProcess {
     name: string;
     originalType: DataFormats;
     data: string;
 }
 
-async function scanGrammarFolder(vault: Vault, path: string): Promise<HalfProcess[] | null> {
+interface ValidGrammar {
+    name: string;
+    originalType: DataFormats;
+    data: object; // Technically it's an object full of arrays
+}
+
+async function scanGrammarFolder(vault: Vault, path: string): Promise<UnprocessedGrammar[] | null> {
     if (!path) return null;
     
     const folder = vault.getFolderByPath(path);
@@ -27,7 +33,7 @@ async function scanGrammarFolder(vault: Vault, path: string): Promise<HalfProces
         }));
 }
 
-async function getGrammarData(app: App, file: HalfProcess): Promise<CleanGrammar | null> {
+async function getGrammarData(app: App, file: UnprocessedGrammar): Promise<HalfProcess | null> {
     const cache = app.metadataCache.getFileCache(file.data);
 
     if (!cache || !cache.sections) return null;
@@ -58,7 +64,7 @@ async function getGrammarData(app: App, file: HalfProcess): Promise<CleanGrammar
     return null;
 }
 
-export async function parseDataFromFolder(app: App, path: string): Promise<object[]> { 
+export async function parseDataFromFolder(app: App, path: string): Promise<ValidGrammar[]> { 
     // steps:
     // scanGrammarFolder()
     const grammarFiles = await scanGrammarFolder(app.vault, path)
@@ -71,14 +77,22 @@ export async function parseDataFromFolder(app: App, path: string): Promise<objec
 
             if (!content) return null;
 
+            const validated: ValidGrammar = {
+                name: content.name,
+                originalType: content.originalType,
+                data: {}
+            }
+
         // parse JSON *or* turn YAML into JSON
             try {
                 // Check for JSON first.
-                return JSON.parse(content.data);
+                validated.data = JSON.parse(content.data)
             } catch {
                 // YAML fallback.
-                return parseYaml(content.data);
+                validated.data = parseYaml(content.data)
             }
+
+            return validated;
         })
     );
     // return array of valid grammar objects - all in JSON :)
