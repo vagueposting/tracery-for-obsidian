@@ -1,90 +1,135 @@
-# Obsidian Sample Plugin
+# Tracery for Obsidian v0.1.0
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+A port of [Kate Compton's **Tracery** library](https://github.com/galaxykate/tracery) for [Obsidian](https://obsidian.md/).
 
-This project uses TypeScript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+## What this does
+Tracery is a generative text grammar before the concept of "text generation" was a cool buzzword.
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open modal (simple)" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+If you've ever followed a Twitter bot back in the day, chances are it was built on Cheap Bots, Done Quick (rest in peace 🙏), which in itself runs on Tracery.
 
-## First time developing plugins?
-
-Quick starting guide for new plugin devs:
-
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
-
-## Releasing new releases
-
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
-
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
-
-## Adding your plugin to the community plugin list
-
-- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
-
-## How to use
-
-- Clone this repo.
-- Make sure your NodeJS is at least v16 (`node --version`).
-- `npm i` or `yarn` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
-
-## Manually installing the plugin
-
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
-
-## Improve code quality with eslint
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- This project already has eslint preconfigured, you can invoke a check by running`npm run lint`
-- Together with a custom eslint [plugin](https://github.com/obsidianmd/eslint-plugin) for Obsidan specific code guidelines.
-- A GitHub action is preconfigured to automatically lint every commit on all branches.
-
-## Funding URL
-
-You can include funding URLs where people who use your plugin can financially support it.
-
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
+To use it, you have to build a **grammar**, which is a JSON object consisting of several arrays:
 
 ```json
 {
-    "fundingUrl": "https://buymeacoffee.com"
+  "origin": ["#vegetarian#. It is #flavor#.", "#meat#. It is #flavor#."],
+  "vegetables": ["carrots", "potatoes", "turnips"],
+  "meat": ["chicken", "beef", "pork"],
+  "vegetarian": ["A delicious vegetable stew with #vegetables#, #vegetables#, and #vegetables#"],
+  "regular": ["A delicious #meat# stew with #vegetables# and #vegetables#"],
+  "flavor": ["spicy", "sweet", "salty", "sour", "savory"]
 }
 ```
 
-If you have multiple URLs, you can also do:
+[Kate's tutorial over at the Crystal Code Palace](https://tracery.io/archival/crystalcodepalace/tracerytut.html) is a really good crash course for the library. If you're new to Tracery or haven't used it in a while, I urge you to run through the tutorial before building anything.
 
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
+Using this plugin, you can generate text using these grammars straight into your Obsidian vault.
+
+## Why you should use it
+You can use Tracery for Obsidian to generate creative prompts, NPC descriptions, random encounters, and to simply build some randomization in your notes.
+
+## Installation
+Currently, this plugin isn't on the plugin gallery yet. You can either install this plugin by:
+- Using [BRAT](https://github.com/TfTHacker/obsidian42-brat)
+- Downloading the release zip file and extracting it into your vault's `.obsidian\plugins` folder.
+
+## Usage
+### Set up your grammar folder
+Create a folder in your vault and input it into the plugin settings. Tracery for Obsidian (TfO) will automatically scan it for grammar files.
+If regular Notices annoy you, it's also a good idea to turn off notifications.
+
+### Write your first grammar
+Grammars can be written in two ways: **JSON** or **YAML**.
+
+Simply create a new file in your grammar folder, and create a json or yaml codeblock.
+
+Use JSON if you're a Tracery traditionalist. 
+```md
+    ```json
+    {
+    "animal": ["bear", "cat", "horse", "dog", "bunny", "bat", "sheep"],
+    "color": ["hot pink", "baby blue", "scarlet", "chartreuse", "orange"],
+    "emotion": ["happy", "sad", "silly", "angry", "curious"],
+    "origin": [
+        "I'm going to Build-a-Bear and make #color.a# #emotion# #animal#."
+    ]
     }
-}
+    ```
 ```
 
-## API Documentation
+Use YAML if you want something more readable. **Based on speed and familiarity, I really recommend this.** I highly recommend:
+- wrapping all your strings in double quotes
+    - but if it's just a single word (no spaces) then it's not really going to cause problems.
+- NOT indenting; the plugin can't read indented YAML!
 
-See https://docs.obsidian.md
+```md
+    ```yaml
+    animal:
+    - bear
+    - cat
+    - horse
+    - dog
+    - bunny
+    - bat
+    - sheep
+    color:
+    - "hot pink"
+    - "baby blue"
+    - scarlet
+    - chartreuse
+    - orange
+    emotion:
+    - happy
+    - sad
+    - silly
+    - angry
+    - curious
+    origin:
+    - 'I''m going to Build-a-Bear and make #color.a# #emotion# #animal#.'
+    ```
+```
+
+### Call the grammars
+There's two ways to call grammars:
+1. Through [Templater](https://github.com/SilentVoid13/Templater/)
+2. Through embeds
+
+#### Calling through Templater
+You can access the plugin through `app.plugins.getPlugin('tracery-for-obsidian')`, and you can generate text by running `grammarService.generateText(filename, rule)`. Like so:
+
+```js
+const tracery = app.plugins.getPlugin('tracery-for-obsidian');
+const result = tracery.grammarService.generateText('cute-grammar.md', '#origin#');
+// then you can toss the result like you would any other variable
+```
+
+Due to a quirk with the code, you need to add `'#origin#'` as the rule to access the origin rule (basically the very base of your grammar.) I'm going to figure this out eventually.
+
+Also, this feature supports inline generation.
+
+Anyway, this makes it so that whatever you roll on your grammar, you will keep that within the file you used the template in. Very cool!
+
+### Calling through embeds
+You might want to, instead, reroll text every time you load a file. You can do this by writing the grammar filename within a `tracery` code block.
+
+**This one is a little more finicky.** As of now you can't use file names with pauses, so just use underscores and dashes.
+
+```md
+    ```tracery
+        cute-grammar.md
+    ```
+```
+
+Result:
+```md
+I'm going to Build-a-Bear and make a scarlet sad bunny.
+```
+
+(after refresh)
+```md
+I'm going to Build-a-Bear and make a scarlet happy cat.
+```
+
+Take note that this feature does not support inline generation.
+
+## And that's it!
+If you enjoy using the plugin, have questions, or would like to contribute - please ping me (@vagueposting) on the official Obsidian Discord. I don't accept DMs from strangers unfortunately but I'd love to chat on the server.
