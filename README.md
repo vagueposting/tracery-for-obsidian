@@ -30,7 +30,7 @@ You can use Tracery for Obsidian to generate creative prompts, NPC descriptions,
 ## Installation
 Currently, this plugin isn't on the plugin gallery yet. You can either install this plugin by:
 - Using [BRAT](https://github.com/TfTHacker/obsidian42-brat)
-- Downloading the release zip file and extracting it into your vault's `.obsidian\plugins` folder.
+- Downloading [from the releases](https://github.com/vagueposting/tracery-for-obsidian/releases) and extracting it into your vault's `.obsidian\plugins` folder.
 
 ## Usage
 ### Set up your grammar folder
