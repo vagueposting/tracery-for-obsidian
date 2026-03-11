@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Cute Spam.md",
+                "file": "grammars/Cute Grammar.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Cute Spam"
+              "title": "Cute Grammar"
             }
           }
         ],
@@ -221,13 +221,13 @@
   },
   "active": "550a79fb786f204f",
   "lastOpenFiles": [
+    "grammars/Sample Grammar.md",
     "grammars/Cute Grammar.md",
     "Cute Spam.md",
     "templates/Cute Creator.md",
     "Story Creator Spam.md",
     "templates/Story Creator.md",
     "grammars/Sample Grammar YAML.md",
-    "grammars/Sample Grammar.md",
     "Welcome.md",
     "templates/Test YAML.md",
     "grammars/StoryCreator.md",

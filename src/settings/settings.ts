@@ -4,10 +4,12 @@ import { FolderSuggest } from './suggesters/FolderSuggester';
 
 export interface TracerySettings {
 	grammarPath: string;
+	updateNotifs: boolean;
 }
 
 export const DEFAULT_SETTINGS: TracerySettings = {
-	grammarPath: ''
+	grammarPath: '',
+	updateNotifs: true
 }
 
 export class GrammarFolderLocation extends PluginSettingTab {
@@ -39,7 +41,20 @@ export class GrammarFolderLocation extends PluginSettingTab {
 					});
 
 				// @ts-ignore
-				cb.containerEl.addClass('tracerySearch');
-			})
-	}
-}
+				cb.containerEl.addClass('tracery');
+			});
+
+			
+        new Setting(this.containerEl)
+            .setName('Notify on update')
+            .setDesc('Disable this if you find notifications while editing annoying')
+            .addToggle((toggle) => {
+                toggle
+                    .setValue(this.plugin.settings.updateNotifs)
+                    .onChange((updateNotifs) => {
+                        this.plugin.settings.updateNotifs =
+                            updateNotifs;
+                        this.plugin.saveSettings();
+                    });
+            });
+}}

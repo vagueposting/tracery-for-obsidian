@@ -16,7 +16,9 @@ main.js
 *.map
 
 # obsidian
+testVault
 data.json
+manifest.json
 
 # Exclude macOS Finder (System Explorer) View States
 .DS_Store

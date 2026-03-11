@@ -2,7 +2,7 @@ import { Plugin, TFile, CachedMetadata, Notice } from 'obsidian';
 import { DEFAULT_SETTINGS, TracerySettings, GrammarFolderLocation } from "./settings/settings";
 import { parseDataFromFolder } from "./data-handlers/data-validator";
 import { GrammarService } from './services/grammar-service';
-import { DataFormats } from 'data-handlers/data-types';
+import { DataFormats } from './data-handlers/data-types';
 
 export default class TraceryForObsidian extends Plugin {
     settings: TracerySettings;
@@ -53,7 +53,9 @@ export default class TraceryForObsidian extends Plugin {
             && file instanceof TFile) {
             setTimeout(async () => {
                 await this.reloadAllGrammars();
-                new Notice(`Grammar updated: ${file.name}`);                
+                if (this.settings.updateNotifs) {
+                    new Notice(`Grammar updated: ${file.name}`);
+                }                
             })
         }
     }
@@ -63,7 +65,9 @@ export default class TraceryForObsidian extends Plugin {
         
         this.grammarService.updateGrammars(grammars);
 
-        new Notice(`Grammars reloaded!\nVault currently has ${grammars.length} grammars.`);
+        if (this.settings.updateNotifs) {
+            new Notice(`Grammars reloaded!\nVault currently has ${grammars.length} grammars.`);
+        }
     }
 
     getGrammarJSON(key: string): string | null {
