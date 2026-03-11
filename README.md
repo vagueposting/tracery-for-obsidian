@@ -43,49 +43,47 @@ Grammars can be written in two ways: **JSON** or **YAML**.
 Simply create a new file in your grammar folder, and create a json or yaml codeblock.
 
 Use JSON if you're a Tracery traditionalist. 
-```md
-    ```json
-    {
-    "animal": ["bear", "cat", "horse", "dog", "bunny", "bat", "sheep"],
-    "color": ["hot pink", "baby blue", "scarlet", "chartreuse", "orange"],
-    "emotion": ["happy", "sad", "silly", "angry", "curious"],
-    "origin": [
-        "I'm going to Build-a-Bear and make #color.a# #emotion# #animal#."
-    ]
-    }
-    ```
+
+```json
+{
+"animal": ["bear", "cat", "horse", "dog", "bunny", "bat", "sheep"],
+"color": ["hot pink", "baby blue", "scarlet", "chartreuse", "orange"],
+"emotion": ["happy", "sad", "silly", "angry", "curious"],
+"origin": [
+    "I'm going to Build-a-Bear and make #color.a# #emotion# #animal#."
+]
+}
 ```
+
 
 Use YAML if you want something more readable. **Based on speed and familiarity, I really recommend this.** I highly recommend:
 - wrapping all your strings in double quotes
     - but if it's just a single word (no spaces) then it's not really going to cause problems.
 - NOT indenting; the plugin can't read indented YAML!
 
-```md
-    ```yaml
-    animal:
-    - bear
-    - cat
-    - horse
-    - dog
-    - bunny
-    - bat
-    - sheep
-    color:
-    - "hot pink"
-    - "baby blue"
-    - scarlet
-    - chartreuse
-    - orange
-    emotion:
-    - happy
-    - sad
-    - silly
-    - angry
-    - curious
-    origin:
-    - 'I''m going to Build-a-Bear and make #color.a# #emotion# #animal#.'
-    ```
+```yaml
+animal:
+- bear
+- cat
+- horse
+- dog
+- bunny
+- bat
+- sheep
+color:
+- "hot pink"
+- "baby blue"
+- scarlet
+- chartreuse
+- orange
+emotion:
+- happy
+- sad
+- silly
+- angry
+- curious
+origin:
+- 'I''m going to Build-a-Bear and make #color.a# #emotion# #animal#.'
 ```
 
 ### Call the grammars
