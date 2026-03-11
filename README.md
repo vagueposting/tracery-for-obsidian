@@ -11,7 +11,7 @@ To use it, you have to build a **grammar**, which is a JSON object consisting of
 
 ```json
 {
-  "origin": ["#vegetarian#. It is #flavor#.", "#meat#. It is #flavor#."],
+  "origin": ["#vegetarian#. It is #flavor#.", "#regular#. It is #flavor#."],
   "vegetables": ["carrots", "potatoes", "turnips"],
   "meat": ["chicken", "beef", "pork"],
   "vegetarian": ["A delicious vegetable stew with #vegetables#, #vegetables#, and #vegetables#"],
