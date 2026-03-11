@@ -11,16 +11,12 @@ export class GrammarService {
 
         if (!grammar) return null;
 
-        console.log(grammar)
-
         return this.renderGrammar(grammar.data, rule);
     }
 
     // generating fresh text for live updates
     generateNewText(grammarData: ValidGrammar['data'], rule: string = '#origin#'): string | null {
         if (!grammarData) return null;
-
-        console.log(grammarData)
     
         return this.renderGrammar(grammarData, rule);
     }
@@ -29,7 +25,7 @@ export class GrammarService {
     private renderGrammar(grammarData: Record<string, string | string[]>,
          rule: string): string {
         const grammar = tracery.createGrammar(grammarData);
-        console.table(grammarData);
+
         grammar.addModifiers(tracery.baseEngModifiers);
         
         return grammar.flatten(rule);

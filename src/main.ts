@@ -1,4 +1,4 @@
-import { Plugin, TFile, Notice, CachedMetadata } from 'obsidian';
+import { Plugin, TFile, CachedMetadata, Notice } from 'obsidian';
 import { DEFAULT_SETTINGS, TracerySettings, GrammarFolderLocation } from "./settings/settings";
 import { parseDataFromFolder } from "./data-handlers/data-validator";
 import { GrammarService } from './services/grammar-service';
@@ -42,7 +42,6 @@ export default class TraceryForObsidian extends Plugin {
             name: 'Reload all grammars in folder',
             callback: async () => {
                 await this.reloadAllGrammars();
-                new Notice('Grammars reloaded!');
             }
         })
 
@@ -52,13 +51,10 @@ export default class TraceryForObsidian extends Plugin {
     async handleGrammarFileChange(file: TFile) {
         if (file.path.startsWith(this.grammarFolderPath)
             && file instanceof TFile) {
-            console.log(`Grammar file changed: ${file.path}`);
-
-            const grammars = await parseDataFromFolder(this.app, this.grammarFolderPath);
-
-            this.grammarService.updateGrammars(grammars);
-
-            new Notice(`Grammar updated: ${file.name}`);
+            setTimeout(async () => {
+                await this.reloadAllGrammars();
+                new Notice(`Grammar updated: ${file.name}`);                
+            })
         }
     }
 
@@ -67,7 +63,7 @@ export default class TraceryForObsidian extends Plugin {
         
         this.grammarService.updateGrammars(grammars);
 
-        console.log(`Loaded ${grammars.length} grammars.`)
+        new Notice(`Grammars reloaded!\nVault currently has ${grammars.length} grammars.`);
     }
 
     getGrammarJSON(key: string): string | null {

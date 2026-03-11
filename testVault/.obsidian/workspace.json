@@ -1,32 +1,59 @@
 {
   "main": {
-    "id": "0b95c14446082248",
+    "id": "78f30cd04e04d43f",
     "type": "split",
     "children": [
       {
-        "id": "f6d0c0d69dd678dc",
+        "id": "59951b2d5adc8641",
         "type": "tabs",
         "children": [
           {
-            "id": "0c1a2eeba6ff333c",
+            "id": "7dc6c61208e802ff",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-<<<<<<< HEAD
-                "file": "Welcome.md",
-=======
-                "file": "templates/Test YAML.md",
->>>>>>> tracery-implementation
+                "file": "Story Creator Spam.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Story Creator Spam"
+            }
+          },
+          {
+            "id": "550a79fb786f204f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Cute Spam.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-<<<<<<< HEAD
-              "title": "Welcome"
-=======
-              "title": "Test YAML"
->>>>>>> tracery-implementation
+              "title": "Cute Spam"
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "abbbe07e7b3a2485",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cfeec177e4b2c07a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "grammars/Sample Grammar YAML.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Sample Grammar YAML"
             }
           }
         ]
@@ -35,15 +62,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "432c0e159eb4cac8",
+    "id": "fe9e4b747da8cf80",
     "type": "split",
     "children": [
       {
-        "id": "68d298a674c883e7",
+        "id": "3fb612bb75892599",
         "type": "tabs",
         "children": [
           {
-            "id": "43afb996f31bf117",
+            "id": "bed89c049aa0b01f",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -56,7 +83,7 @@
             }
           },
           {
-            "id": "6680ba0717769841",
+            "id": "77045e1c16079570",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -73,7 +100,7 @@
             }
           },
           {
-            "id": "a630b86c0ccf385c",
+            "id": "97ca9fecbde2f6e5",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -89,20 +116,20 @@
     "width": 300
   },
   "right": {
-    "id": "9fd836626e1b87e0",
+    "id": "e5bb4a4eb7db231d",
     "type": "split",
     "children": [
       {
-        "id": "4d24ed5db06b9bc0",
+        "id": "db8c2089dc006d56",
         "type": "tabs",
         "children": [
           {
-            "id": "5b602c0ad41e7441",
+            "id": "ce0f202fd4a91f48",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Welcome.md",
+                "file": "Cute Spam.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,25 +139,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Welcome"
+              "title": "Backlinks for Cute Spam"
             }
           },
           {
-            "id": "a11f9daff635031e",
+            "id": "0504f538b06bb73a",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Welcome.md",
+                "file": "Cute Spam.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Welcome"
+              "title": "Outgoing links from Cute Spam"
             }
           },
           {
-            "id": "2e03f257a5d28145",
+            "id": "6bee35fcf267a549",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -145,7 +172,7 @@
             }
           },
           {
-            "id": "b897d5be7d5a0a42",
+            "id": "da3ec1ca86a5aebe",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -159,18 +186,18 @@
             }
           },
           {
-            "id": "7cea19a8c8a1da21",
+            "id": "5860a54295a10cac",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Welcome.md",
+                "file": "Cute Spam.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Welcome"
+              "title": "Outline of Cute Spam"
             }
           }
         ]
@@ -192,48 +219,19 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "0c1a2eeba6ff333c",
+  "active": "550a79fb786f204f",
   "lastOpenFiles": [
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    "templates/Test YAML.md",
-=======
->>>>>>> tracery-implementation
-    "Welcome.md",
-    "templates/Test.md",
+    "grammars/Cute Grammar.md",
+    "Cute Spam.md",
+    "templates/Cute Creator.md",
+    "Story Creator Spam.md",
+    "templates/Story Creator.md",
     "grammars/Sample Grammar YAML.md",
     "grammars/Sample Grammar.md",
-    "Template Spam Go.md",
-<<<<<<< HEAD
-=======
-    "templates/Test.md",
-    "templates/Test YAML.md",
-    "templates",
-    "grammars/Sample Grammar.md",
-    "grammars/Sample Grammar YAML.md",
-    "grammars",
-    "Template Spam Go.md",
     "Welcome.md",
->>>>>>> Stashed changes
-    "Untitled.md",
-=======
-    "Untitled.md",
     "templates/Test YAML.md",
->>>>>>> tracery-implementation
-    "Untitled 5.md",
-    "Untitled 3.md",
-    "Untitled 4.md",
-    "Untitled 1.md",
-    "Untitled 2.md",
-    "test2.md",
-<<<<<<< HEAD
-    "images",
-    "fried foods"
-=======
-    "templates",
-    "images",
-    "fried foods",
-    "grammars"
->>>>>>> tracery-implementation
+    "grammars/StoryCreator.md",
+    "templates/Test.md",
+    "Template Spam Go.md"
   ]
 }
