@@ -1,4 +1,4 @@
-import { Plugin, TFile, CachedMetadata, Notice } from 'obsidian';
+import { Plugin, TFile, Notice } from 'obsidian';
 import { DEFAULT_SETTINGS, TracerySettings, GrammarFolderLocation } from "./settings/settings";
 import { parseDataFromFolder } from "./data-handlers/data-validator";
 import { GrammarService } from './services/grammar-service';
@@ -10,6 +10,20 @@ export default class TraceryForObsidian extends Plugin {
     grammarFolderPath: string = '';
 
     async onload() {
+        this.registerMarkdownCodeBlockProcessor('tracery', (source, el, ctx) => {
+            // source contains the grammar name or embedded grammar
+            const grammarName = source.trim();
+            const grammar = this.grammarService.getGrammar(grammarName);
+            
+            if (grammar) {
+                // Generate fresh text every time the preview updates
+                const text = this.grammarService.generateNewText(grammar.data)
+                el.setText(text ?? '[Error: failed to generate text]');
+            } else {
+                el.setText(`Grammar "${grammarName}" not found`);
+            }
+        });
+
         await this.loadSettings();
         this.grammarFolderPath = this.settings.grammarPath;
 

@@ -5,6 +5,14 @@ import { stringifyYaml } from 'obsidian';
 export class GrammarService {
     private grammars: Map<string, ValidGrammar> = new Map();
 
+    getGrammar(key: string): ValidGrammar | null {
+        const g =  this.grammars.get(key);
+
+        if (!g) return null;
+
+        return g;
+    }
+
     generateText(grammarName: string,
         rule: string = '#origin#'): string | null {
         const grammar = this.grammars.get(grammarName);
@@ -16,9 +24,14 @@ export class GrammarService {
 
     // generating fresh text for live updates
     generateNewText(grammarData: ValidGrammar['data'], rule: string = '#origin#'): string | null {
-        if (!grammarData) return null;
-    
-        return this.renderGrammar(grammarData, rule);
+        if (!grammarData) return '[Error: no grammar data]';
+
+        try {
+            return this.renderGrammar(grammarData, rule);
+        } catch (e) {
+            console.error('Error generating text:', e);
+            return '[Error: Failed to generate text]';
+        }
     }
 
     // core rendering logic
